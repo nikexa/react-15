@@ -8,13 +8,14 @@ const Planet = () => {
     const data=location.state
 
   return (
+    <>
     <div className='flex '>
 
       <div className='w-[60%] flex justify-center items-center'>
-        <img className='w-[250px] h-[250px]' src={data.images.planet} alt="" />
+        <img src={data.images.planet} alt="" />
       </div>
 
-      <div className='w-[40%] '>
+      <div className='w-[40%] mt-[100px]'>
         <p className='font-[Antonio] font-normal text-[80px] text-white'>{data.name}</p>
         <p className='w-[350px] font-[Spartan] font-normal text-[14px] text-white '>{data.overview.content}</p>
         <div className='flex items-center gap-[8px]'>
@@ -38,6 +39,31 @@ const Planet = () => {
       </div>
 
     </div>
+    
+    <div className='flex justify-center gap-[50px]'>
+      <div className='w-[255px] h-[128px] border border-white flex flex-col justify-center'>
+        <p className='font-[Spartan] font-normal text-[11px] text-white opacity-[50%] ml-[20px]'>ROTATION TIME</p>
+        <p className='font-[Antonio] font-normal text-[40px] text-white  ml-[20px]'>{data.rotation}</p>
+      </div>
+
+      <div className='w-[255px] h-[128px] border border-white flex flex-col justify-center'>
+        <p className='font-[Spartan] font-normal text-[11px] text-white opacity-[50%] ml-[20px]'>REVOLUTION TIME</p>
+        <p className='font-[Antonio] font-normal text-[40px] text-white  ml-[20px]'>{data.revolution}</p>
+      </div>
+
+      <div className='w-[255px] h-[128px] border border-white flex flex-col justify-center'>
+        <p className='font-[Spartan] font-normal text-[11px] text-white opacity-[50%] ml-[20px]'>radius</p>
+        <p className='font-[Antonio] font-normal text-[40px] text-white  ml-[20px]'>{data.radius}</p>
+      </div>
+
+      <div className='w-[255px] h-[128px] border border-white flex flex-col justify-center'>
+        <p className='font-[Spartan] font-normal text-[11px] text-white opacity-[50%] ml-[20px]'>AVERAGE TEMP.</p>
+        <p className='font-[Antonio] font-normal text-[40px] text-white  ml-[20px]'>{data.temperature}</p>
+      </div>
+
+    </div>
+
+    </>
   )
 }
 

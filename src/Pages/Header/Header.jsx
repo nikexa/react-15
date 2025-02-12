@@ -7,7 +7,7 @@ const Header = () => {
     const navigate=useNavigate()
 
   return (
-    <div className="flex justify-between items-center h-[85px]">
+    <div className="flex justify-between items-center h-[85px] border-b border-white">
       <p className="font-[Antonio] font-normal text-[28px] text-white ml-[50px]">
         <Link to={"/"}>THE PLANETS</Link>
       </p>
