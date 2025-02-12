@@ -4,3 +4,9 @@
   margin: 0;
   box-sizing: border-box;
 }
+#root{
+  width: 100%;
+  height: 100vh;
+  background-color: #070724;
+  background-image: url('../src/IMAGES/Background.png');
+}
