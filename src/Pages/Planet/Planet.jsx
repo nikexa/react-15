@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import wikipediaIMG from '../../IMAGES/wikipedia.png'
 
@@ -7,35 +7,60 @@ const Planet = () => {
     const location=useLocation()
     const data=location.state
 
+    const [FirstBTN,setFirstBTN]=useState(true)
+    const [SecondBTN,setSEcondBTN]=useState(false)
+    const [ThirdBTN,setThirdBTN]=useState(false)
+
+    const FirstBTNHandle = (e) =>{
+      setFirstBTN(true)
+      setSEcondBTN(false)
+      setThirdBTN(false)
+    }
+
+    const SecondBTNHandle = (e) =>{
+      setSEcondBTN(true)
+      setFirstBTN(false)
+      setThirdBTN(false)
+    }
+
+    const ThirdBTNHandle = (e) =>{
+      setSEcondBTN(false)
+      setFirstBTN(false)
+      setThirdBTN(true)
+    }
+
+
   return (
     <>
-    <div className='flex h-[70vh] xl:flex-col'>
+    <div className='flex h-[70vh] '>
 
-      <div className='w-[60%] flex justify-center items-center'>
-        <img src={data.images.planet} alt="" />
+      <div className={`w-[60%] flex justify-center items-center ${ThirdBTN && "relative"}`}>
+        {FirstBTN && <img src={data.images.planet} alt="" />}
+        {SecondBTN && <img src={data.images.internal} alt="" />}
+        {ThirdBTN && <><img src={data.images.planet} alt="" /> <img className='w-[163px] h-[199px] absolute bottom-[60px]' src={data.images.geology} alt="" /></>}
       </div>
 
       <div className='w-[40%] mt-[100px]'>
         <div>
           <p className='font-[Antonio] font-normal text-[80px] mb-[20px] text-white'>{data.name}</p>
-          <p className='w-[350px] font-[Spartan] font-normal text-[14px] mb-[20px] text-white '>{data.overview.content}</p>
+          <p className='w-[350px] font-[Spartan] font-normal text-[14px] mb-[20px] ragaca'>{FirstBTN ? data.overview.content : SecondBTN ? data.structure.content : ThirdBTN ? data.geology.content : "#"}</p>
           <div className='flex items-center gap-[8px] mb-[30px]'>
-            <p className='font-[Spartan] font-normal text-[14px] text-white tracking-[1px]'>Source :  <a className='fonr-[700] underline' target='blank' href={data.overview.source}> Wikipedia</a></p>
-            <img className='' src={wikipediaIMG} alt="" /> 
+          <p className="font-[Spartan] font-normal text-[14px] tracking-[1px] rame">Source: <a className="font-[700] underline ara" target="_blank" href={FirstBTN ? data.overview.source : SecondBTN ? data.structure.source : ThirdBTN ? data.geology.source : "#"}>Wikipedia</a></p>
+          <img className='' src={wikipediaIMG} alt="" /> 
           </div>
         </div>
         <div className='flex  flex-col gap-[16px]'>
-        <button className='flex gap-[20px] h-[48px] w-[350px] bg-[#419EBB;] items-center test'>
+        <button onClick={(e)=> FirstBTNHandle(e)} className={`flex gap-[20px] h-[48px] w-[350px] cursor-pointer ${!FirstBTN ? "bg-[#070724] ata" : "bg-[#419EBB]"} items-center test`}>
           <p className='font-[Spartan] font-normal text-[12px] text-white opacity-[50%] ml-[25px]'>01</p>
           <p className='font-[Spartan] font-normal text-[12px] text-white ml-[10px]'>OVERVIEW</p>
         </button>
 
-        <button className='flex gap-[20px] h-[48px] w-[350px] bg-[#070724;] items-center  test'>
+        <button onClick={(e)=> SecondBTNHandle(e)} className={`flex gap-[20px] h-[48px] w-[350px] cursor-pointer  ${!SecondBTN ? "bg-[#070724] ata" : "bg-[#419EBB]"} items-center  test`}>
           <p className='font-[Spartan] font-normal text-[12px] text-white opacity-[50%] ml-[25px]'>02</p>
-          <p className='font-[Spartan] font-normal text-[12px] text-white ml-[10px]'>Surface Geology</p>
+          <p className='font-[Spartan] font-normal text-[12px] text-white ml-[10px]'>Internal Structure</p>
         </button>
 
-        <button className='flex gap-[20px] h-[48px] w-[350px] bg-[#070724;] items-center  test'>
+        <button onClick={(e)=> ThirdBTNHandle(e)} className={`flex gap-[20px] h-[48px] w-[350px] cursor-pointer  ${!ThirdBTN ? "bg-[#070724] ata" : "bg-[#419EBB]"} items-center  test`}>
           <p className='font-[Spartan] font-normal text-[12px] text-white opacity-[50%] ml-[25px]'>03</p>
           <p className='font-[Spartan] font-normal text-[12px] text-white  ml-[10px]'>Surface Geology</p>
         </button>

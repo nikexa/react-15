@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-antonio: Antonio;
-  --font-spartan: Spartan;
+  --font-antonio: "Antonio";
+  --font-spartan: "Spartan";
   /*  */
 }
 #root{
@@ -16,4 +16,16 @@
 }
 .Htest{
   border-bottom: 1px solid rgba(255, 255, 255, .2);
+}
+.ragaca{
+  color: rgba(255, 255, 255, 0.7);
+}
+.rame{
+  color: rgba(255, 255, 255, 0.3);
+}
+.ara{
+  color: rgba(255, 255, 255, 0.7);
+}
+.ata:hover{
+  background-color: rgba(216, 216, 216, .2);
 }
